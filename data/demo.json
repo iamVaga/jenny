@@ -1,0 +1,301 @@
+{
+  "organization": {
+    "id": "synthetic-org",
+    "name": "Synthetic SaaS"
+  },
+  "customers": [
+    {
+      "id": "expand",
+      "organization_id": "synthetic-org",
+      "name": "Synthetic expand"
+    },
+    {
+      "id": "contract",
+      "organization_id": "synthetic-org",
+      "name": "Synthetic contract"
+    },
+    {
+      "id": "churn",
+      "organization_id": "synthetic-org",
+      "name": "Synthetic churn"
+    },
+    {
+      "id": "new",
+      "organization_id": "synthetic-org",
+      "name": "Synthetic new"
+    }
+  ],
+  "contracts": [
+    {
+      "id": "expand-a",
+      "organization_id": "synthetic-org",
+      "customer_id": "expand",
+      "currency": "USD",
+      "amount": "100",
+      "cadence_months": 1,
+      "classification": "fixed_recurring",
+      "start": "2026-01-01",
+      "end": "2026-07-01",
+      "evidence_id": "expand-a"
+    },
+    {
+      "id": "expand-b",
+      "organization_id": "synthetic-org",
+      "customer_id": "expand",
+      "currency": "USD",
+      "amount": "150",
+      "cadence_months": 1,
+      "classification": "fixed_recurring",
+      "start": "2026-07-01",
+      "end": "2027-01-01",
+      "evidence_id": "expand-b"
+    },
+    {
+      "id": "contract-a",
+      "organization_id": "synthetic-org",
+      "customer_id": "contract",
+      "currency": "USD",
+      "amount": "100",
+      "cadence_months": 1,
+      "classification": "fixed_recurring",
+      "start": "2026-01-01",
+      "end": "2026-07-01",
+      "evidence_id": "contract-a"
+    },
+    {
+      "id": "contract-b",
+      "organization_id": "synthetic-org",
+      "customer_id": "contract",
+      "currency": "USD",
+      "amount": "80",
+      "cadence_months": 1,
+      "classification": "fixed_recurring",
+      "start": "2026-07-01",
+      "end": "2027-01-01",
+      "evidence_id": "contract-b"
+    },
+    {
+      "id": "churn-a",
+      "organization_id": "synthetic-org",
+      "customer_id": "churn",
+      "currency": "USD",
+      "amount": "100",
+      "cadence_months": 1,
+      "classification": "fixed_recurring",
+      "start": "2026-01-01",
+      "end": "2026-07-01",
+      "evidence_id": "churn-a"
+    },
+    {
+      "id": "new-b",
+      "organization_id": "synthetic-org",
+      "customer_id": "new",
+      "currency": "USD",
+      "amount": "200",
+      "cadence_months": 1,
+      "classification": "fixed_recurring",
+      "start": "2026-07-01",
+      "end": "2027-01-01",
+      "evidence_id": "new-b"
+    }
+  ],
+  "invoices": [
+    {
+      "id": "inv-expand-a",
+      "customer_id": "expand",
+      "invoice_date": "2026-01-01",
+      "currency": "USD",
+      "amount": "600",
+      "evidence_id": "expand-a"
+    },
+    {
+      "id": "inv-expand-b",
+      "customer_id": "expand",
+      "invoice_date": "2026-07-01",
+      "currency": "USD",
+      "amount": "900",
+      "evidence_id": "expand-b"
+    },
+    {
+      "id": "inv-contract-a",
+      "customer_id": "contract",
+      "invoice_date": "2026-01-01",
+      "currency": "USD",
+      "amount": "600",
+      "evidence_id": "contract-a"
+    },
+    {
+      "id": "inv-contract-b",
+      "customer_id": "contract",
+      "invoice_date": "2026-07-01",
+      "currency": "USD",
+      "amount": "480",
+      "evidence_id": "contract-b"
+    },
+    {
+      "id": "inv-churn-a",
+      "customer_id": "churn",
+      "invoice_date": "2026-01-01",
+      "currency": "USD",
+      "amount": "600",
+      "evidence_id": "churn-a"
+    },
+    {
+      "id": "inv-new-b",
+      "customer_id": "new",
+      "invoice_date": "2026-07-01",
+      "currency": "USD",
+      "amount": "1200",
+      "evidence_id": "new-b"
+    }
+  ],
+  "line_items": [
+    {
+      "id": "line-expand-a",
+      "invoice_id": "inv-expand-a",
+      "currency": "USD",
+      "amount": "600",
+      "classification": "fixed_recurring",
+      "service_start": "2026-01-01",
+      "service_end": "2026-07-01",
+      "normalization_months": "6",
+      "contract_id": "expand-a",
+      "evidence_id": "expand-a"
+    },
+    {
+      "id": "line-expand-b",
+      "invoice_id": "inv-expand-b",
+      "currency": "USD",
+      "amount": "900",
+      "classification": "fixed_recurring",
+      "service_start": "2026-07-01",
+      "service_end": "2027-01-01",
+      "normalization_months": "6",
+      "contract_id": "expand-b",
+      "evidence_id": "expand-b"
+    },
+    {
+      "id": "line-contract-a",
+      "invoice_id": "inv-contract-a",
+      "currency": "USD",
+      "amount": "600",
+      "classification": "fixed_recurring",
+      "service_start": "2026-01-01",
+      "service_end": "2026-07-01",
+      "normalization_months": "6",
+      "contract_id": "contract-a",
+      "evidence_id": "contract-a"
+    },
+    {
+      "id": "line-contract-b",
+      "invoice_id": "inv-contract-b",
+      "currency": "USD",
+      "amount": "480",
+      "classification": "fixed_recurring",
+      "service_start": "2026-07-01",
+      "service_end": "2027-01-01",
+      "normalization_months": "6",
+      "contract_id": "contract-b",
+      "evidence_id": "contract-b"
+    },
+    {
+      "id": "line-churn-a",
+      "invoice_id": "inv-churn-a",
+      "currency": "USD",
+      "amount": "600",
+      "classification": "fixed_recurring",
+      "service_start": "2026-01-01",
+      "service_end": "2026-07-01",
+      "normalization_months": "6",
+      "contract_id": "churn-a",
+      "evidence_id": "churn-a"
+    },
+    {
+      "id": "line-new-b",
+      "invoice_id": "inv-new-b",
+      "currency": "USD",
+      "amount": "1200",
+      "classification": "fixed_recurring",
+      "service_start": "2026-07-01",
+      "service_end": "2027-01-01",
+      "normalization_months": "6",
+      "contract_id": "new-b",
+      "evidence_id": "new-b"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "expand-a",
+      "dataset_id": "synthetic-demo-v1",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "source_file": "synthetic generator",
+      "record_id": "expand-a"
+    },
+    {
+      "id": "expand-b",
+      "dataset_id": "synthetic-demo-v1",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "source_file": "synthetic generator",
+      "record_id": "expand-b"
+    },
+    {
+      "id": "contract-a",
+      "dataset_id": "synthetic-demo-v1",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "source_file": "synthetic generator",
+      "record_id": "contract-a"
+    },
+    {
+      "id": "contract-b",
+      "dataset_id": "synthetic-demo-v1",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "source_file": "synthetic generator",
+      "record_id": "contract-b"
+    },
+    {
+      "id": "churn-a",
+      "dataset_id": "synthetic-demo-v1",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "source_file": "synthetic generator",
+      "record_id": "churn-a"
+    },
+    {
+      "id": "new-b",
+      "dataset_id": "synthetic-demo-v1",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "source_file": "synthetic generator",
+      "record_id": "new-b"
+    },
+    {
+      "id": "independent-control",
+      "dataset_id": "synthetic-demo-v1",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "source_file": "synthetic generator",
+      "record_id": "independent-control"
+    }
+  ],
+  "accounting_periods": [
+    {
+      "id": "year-2026",
+      "start": "2026-01-01",
+      "end": "2027-01-01",
+      "complete": true
+    }
+  ],
+  "controls": [
+    {
+      "id": "gl-2026",
+      "start": "2026-01-01",
+      "end": "2027-01-01",
+      "currency": "USD",
+      "amount": "4380",
+      "basis": "billing_net",
+      "materiality": "0.01",
+      "evidence_id": "independent-control"
+    }
+  ],
+  "billing_policy": {
+    "usage": "exclude",
+    "credits": "deduct"
+  }
+}

@@ -5,6 +5,8 @@ from datetime import date
 from decimal import Decimal, ROUND_HALF_EVEN, localcontext
 from . import __version__
 from .models import Dataset, ReviewException
+from fractions import Fraction
+from .arithmetic import money
 
 DEFINITION = "contract_snapshot_v1"
 POLICY = "Active [start,end); cancellation exclusive; fixed net commitments only; no FX; currency MRR rounded half-even to 0.01, ARR = 12 * rounded MRR"
@@ -72,10 +74,10 @@ def calculate(dataset: Dataset, as_of: date) -> dict:
         context.prec = 60
         context.rounding = ROUND_HALF_EVEN
         for contract in sorted(active, key=lambda c: c.id):
-            totals[contract.currency] = totals.get(contract.currency, Decimal(0)) + contract.amount / Decimal(contract.cadence_months)
+            totals[contract.currency] = totals.get(contract.currency, Fraction(0)) + Fraction(contract.amount) / contract.cadence_months
         result["metrics"] = {}
         for currency, total in sorted(totals.items()):
-            mrr = total.quantize(Decimal("0.01"))
+            mrr = Decimal(money(total))
             result["metrics"][currency] = {"mrr": str(mrr), "arr": str(mrr * 12),
                 "contract_ids": sorted(c.id for c in active if c.currency == currency),
                 "evidence_ids": sorted({c.evidence_id for c in active if c.currency == currency})}

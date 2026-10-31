@@ -1,27 +1,42 @@
 # Data contract
 
-All record models reject extra fields and are frozen. IDs are nonempty strings,
-dates are ISO calendar dates, periods use inclusive start and exclusive end.
-Currencies are three uppercase letters, not an ISO currency registry check.
-Amounts accept Decimal, integer, or decimal strings; binary floats and booleans
-are rejected. Amounts must be finite. Input precision is preserved in source models.
-The engine supports at most 28 amount digits and scale 12; larger values trigger review.
-Cadence is exactly one or twelve months. Contract amount is the net fixed commitment
-for one cadence, after contractual discounts and excluding taxes and variable fees.
-Contract start/end are effective dates, distinct from invoice dates, line service
-periods, payment dates and adjustment recognition periods.
+The 18 original requested record types are defined in models.py, along with
+AccountingControl, ManagementMetric, BillingPolicy and the Dataset envelope. Job requests
+are validated with application.RunConfig. Unknown fields are rejected; schemas are frozen
+and record arrays are tuples. All records need nonempty IDs unique within their type.
+Dataset-level duplicate checks cannot be bypassed by dictionaries overwriting records.
 
-All 18 requested schemas are in models.py. Non-dataset schemas are preliminary and
-are not integrated or independently reconciled. Source invoices may carry negative
-amounts for future validation; they cannot enter this calculation dataset.
-No management-reported figures are accepted or inferred in this slice.
+Money is finite Decimal text, Decimal, or integer; binary floats and booleans are rejected.
+Inputs retain their original currency and precision. Computations reject values with over
+28 significant input digits, scale greater than 12 or exponent above 12 before arithmetic.
+Currencies use three-uppercase-letter syntax; no external ISO registry is consulted.
 
-Customers belong to one organization. Duplicate IDs, missing customer/evidence
-references, parent relationships and every explicit identity mapping block calculation.
-Even approved mappings require a future resolution policy. Renames, duplicate entities
-under different IDs, subsidiaries and resellers are never automatically merged.
-Duplicate entities without explicit mappings cannot yet be detected.
-Multiple active fixed commitments for one customer block calculation because the
-engine cannot distinguish additive subscriptions from superseding amendments.
-No missing required amount is replaced with zero. Explicit zero commitments are valid.
-An empty eligible set yields an empty currency map, not an invented currency total.
+Dates are ISO calendar dates. Effective and service intervals are [start,end), distinct
+from invoice date, payment date, credit issue date and recognition-adjustment period.
+Contracts use net fixed commitments per one-month or twelve-month cadence. Cancellation
+is exclusive on its date. Parent organizations and resellers are not implicitly aggregated.
+
+Invoices carry gross amount. Lines carry pre-discount net-of-tax amount, discount, tax,
+classification, optional contract link, service_start/service_end and normalization_months.
+An invoice must equal sum(line amount - discount + tax). Recurring lines require both
+service dates and a positive explicit normalization period. A six-month prepaid amount
+of 600 with normalization_months 6 means a monthly run-rate of 100. Fractional months
+must be explicitly supplied for prorated service; the engine does not invent them.
+One-time and explicitly excluded usage lines never enter MRR. Hybrid/unknown lines
+must be split/reclassified. Missing service data produces exceptions, not zero revenue.
+
+Credit notes are net-of-tax reductions and must match invoice and line IDs; total credits
+cannot exceed the original net line. A refund must link to a matching credit, currency
+and invoice, and total refunds cannot exceed it. Matched refunds are cash movements,
+not a second revenue deduction. Credit/refund dates cannot precede their parent records.
+
+Linked recurring invoice lines in one service window must collectively agree with the
+contractual net monthly commitment and its customer, currency, classification and effective
+period. Unlinked lines are not assumed to have a verified contractual basis. Multiple active
+contract commitments require review; billable line components may be additive when valid.
+
+AccountingControl specifies currency, period, basis, amount, materiality and evidence.
+AccountingPeriod.complete asserts completeness of source billing and control information
+for the full period; JENNY cannot establish that externally. RevenueAdjustment is a signed
+period-level bridge in the control currency, with one of the documented reason categories.
+Management figures remain separate, with unknown methodology represented explicitly.

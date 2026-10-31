@@ -1,41 +1,31 @@
-# Evidence lineage and saved replay
+# Evidence lineage and replay
 
-Results identify contributing contract and evidence IDs per currency.
-`contributing_records` verifies the dataset digest before returning contract records.
-Run ID includes the parsed dataset hash, date, definition, policy and engine version.
-CLI additionally hashes exact input bytes. Save uses a storage ID derived from both
-calculation ID and raw input hash, so differently formatted source files cannot collide
-merely because they parse to identical inputs.
+Every application result includes raw input SHA-256, parsed input digest, selected request,
+engine version, definition, assumptions, review status and transformation steps. Domain
+snapshots retain contract or invoice-line IDs and evidence IDs; matched recurring credit IDs
+are retained at customer level. Comparison rows retain both endpoint source references.
+Cohort rows retain baseline/current snapshot run IDs and contributing contract/line/credit
+and evidence references. Reconciliations retain billed/credit source IDs and control evidence.
 
-`analyze --save` writes input.json, result.json and manifest.json in a completed run
-directory under outputs/runs, using a staging-directory rename. Existing runs are
-verified and reused; never modified by this API. `replay --run-id <storage_id>` checks
-hashes, parses the retained source, recalculates with the current engine and rejects any
-result or version drift. It does not load arbitrary historical engine versions.
+application.contributing_records(raw, result, currency) validates the exact input hash and
+returns contributing original contract, line, credit and parent invoice records. It filters
+currency-specific financial branches rather than silently returning unrelated currencies.
+engine.contributing_records retains the original contract-only interface.
 
-This provides retained exact-input snapshots and replay verification. It is not an
-OS-enforced immutable store or cryptographically authenticated provenance. A privileged
-local actor can change files and hashes; replay detects mismatches with the current
-engine but cannot establish original authenticity. Historical versions should be
-replayed using the matching source version in an isolated checkout.
+Saved directories contain input.json, result.json, manifest.json and request.json for modern
+jobs. The storage ID combines calculation identity and source byte hash. Complete staged
+directories are renamed into place. Existing saved runs are verified and reused, never
+updated by the API. Replay checks manifest/input/result hashes, reconstructs the typed
+request and reruns the current engine, rejecting version, request or result drift.
 
-Lineage is at contract-record reference level, not cell level. Evidence filenames,
-record IDs and hashes are caller assertions; referenced external evidence files are
-not opened or verified. Sample evidence uses explicit zero hashes as synthetic markers.
+This is source-record lineage and retained exact-input snapshots. It is not spreadsheet
+cell-level lineage, a signed provenance chain, authenticated external evidence, or OS-enforced
+immutable storage. A privileged local actor could replace files and hashes. External evidence
+filenames/hashes are caller assertions; referenced files are never opened automatically.
+Source row/record ID and file name are explicitly retained in EvidenceReference. The demo
+uses all-zero hashes as synthetic markers, clearly labelled caller-asserted in the workbook.
 
-
-## Contract comparison slice
-
-retention.py adds contract_retention_v1 with opening-cohort NRR/GRR, logo and revenue
-churn, expansion/contraction and a balanced ARR bridge. See RETENTION.md for formulas,
-rounding residual and explicit completeness assertion. Earlier statements that these
-metrics are unimplemented are superseded here; acquisition cohort matrices remain absent.
-CLI compare preserves source SHA-256 and source record/evidence IDs; saved comparison
-replay is not implemented. Currency migrations and endpoint validation exceptions block
-metrics. Empty opening cohorts return null ratios with provisional bridge amounts.
-
-Checked-in retention.json has four synthetic customer histories with hand-derived
-expectations in retention_expected.json. New tests cover retained/expanded/contracted/
-churned/zero customers, new-cohort exclusion, empty denominators, completeness, date
-ordering, currency migration/separation, exception propagation, rounding, lineage,
-repeatability, CLI and bridge invariants. This is not a 50-scenario financial benchmark.
+Historical 0.1.0 runs may reject replay under 0.1.1; use the matching source checkout for
+historical engine versions. Save/replay is bounded to 5 MiB per input/result record and fails
+explicitly for oversized reports. Identical source bytes, request and engine yield identical
+financial results; source ordering/formatting can intentionally change provenance identities.

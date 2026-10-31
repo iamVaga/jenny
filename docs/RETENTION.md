@@ -43,3 +43,19 @@ Every movement includes the contributing endpoint contract IDs and evidence IDs.
 Result includes input digest, both snapshot run IDs, comparison definition/version,
 engine version, policy and complete-history assertion. External evidence-file hashes
 remain unverified. No acquisition-cohort matrix or independent reconciliation is supplied.
+
+
+## Billing, exact rates and saved jobs
+
+billing_retention_v1 applies the same opening-cohort formulas to billing_v1 endpoints.
+Exact rational rate numerators/denominators avoid repeating-division tie drift. Displayed
+money remains Decimal rounded half-even to cents. Billing source line/credit IDs and
+both endpoint evidence references are retained. Simultaneous currencies or currency
+migration for a customer require review. The compare CLI now supports --save and replay
+by storage ID through the typed application/store lifecycle.
+
+First-observed cohort reports use positive eligible acquisition-month-end baselines and
+subsequent month ends, with a 240-month bound. They require complete-history assertion,
+retain baseline/current snapshot IDs and source references, and do not claim verified
+lifetime acquisition. Empty initial month-end baselines are review exceptions. Pure endpoint
+retention and cohort matrices measure different boundaries; they are not interchangeable.

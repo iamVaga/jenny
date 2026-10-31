@@ -1,14 +1,17 @@
-# Implementation plan
+# Implementation status and next work
 
-Completed: typed contract foundation and deterministic MRR/ARR; retained raw snapshots
-with verified replay; contract opening-cohort retention/churn and ARR bridge with explicit
-rounding residual, source-record IDs and independently specified fixture expectations.
+Implemented v0.1 backend: all requested base data schemas; explicit contract and billing
+MRR/ARR; retention, churn, expansion/contraction, first-observed cohorts and ARR bridges;
+validation and explicit identity resolution; separately supplied accounting control
+reconciliation; record-level lineage and retained snapshots; deterministic benchmark suite;
+unit, integration, invalid-input, regression and Hypothesis tests; local CLI lifecycle;
+13-sheet safe Excel export; engineering/security/methodology documentation.
 
-Next bounded slice: billing-derived recurring revenue with explicit service periods,
-recurring classifications and credit/refund treatments. Confirm policies before extending
-them to usage/hybrid revenue. Then add independent accounting control reconciliation,
-identity/amendment resolution, acquisition cohort matrices and saved comparison replay.
-Expand to 50 independently specified financial scenarios and Hypothesis tests; finally
-add a safely escaped Excel diligence workbook with formula/layout validation.
+Intentional review boundaries are in LIMITATIONS.md. Unsupported financial cases are
+structured exceptions, not placeholders or guessed outputs. No frontend is required.
 
-No frontend is required for v0.1. No deployment is part of these slices.
+Recommended next work is analyst review of definitions and a controlled source-system
+adapter against an agreed source format, with real-world completeness controls and an
+approved retention/usage/FX methodology. Further hardening would add authenticated immutable
+evidence storage, access controls, historical-engine replay packaging and native Excel QA.
+Deployment requires a separate explicit instruction and security/operational design.

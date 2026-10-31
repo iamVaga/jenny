@@ -2,6 +2,8 @@
 import hashlib
 from datetime import date
 from decimal import Decimal, ROUND_HALF_EVEN, localcontext
+from fractions import Fraction
+from .arithmetic import money as exact_money, ratio as exact_ratio
 from .engine import calculate
 from .models import Dataset
 
@@ -9,10 +11,16 @@ DEFINITION = "contract_retention_v1"
 POLICY = "Positive opening MRR cohort; endpoint changes; new logos excluded from NRR; complete contract history asserted; no FX; monetary movements rounded half-even to 0.01 with explicit bridge rounding residual; ratios are fractions rounded to 8 decimals"
 
 
-def compare(dataset: Dataset, opening: date, closing: date, *, complete_history: bool = False) -> dict:
-    first = calculate(dataset, opening)
-    last = calculate(dataset, closing)
-    run_id = hashlib.sha256(f"{first['run_id']}|{last['run_id']}|{DEFINITION}|{POLICY}|{complete_history}".encode()).hexdigest()
+def compare(dataset: Dataset, opening: date, closing: date, *, complete_history: bool = False, basis: str = "contract") -> dict:
+    if basis not in ("contract", "billing"):
+        raise ValueError("Unsupported retention basis")
+    calculator = calculate
+    if basis == "billing":
+        from .billing import calculate as calculator
+    definition = DEFINITION if basis == "contract" else "billing_retention_v1"
+    first = calculator(dataset, opening)
+    last = calculator(dataset, closing)
+    run_id = hashlib.sha256(f"{first['run_id']}|{last['run_id']}|{definition}|{POLICY}|{complete_history}".encode()).hexdigest()
     exceptions = []
     if opening >= closing:
         exceptions.append({"code": "INVALID_COMPARISON_DATES", "record_id": "comparison", "reason": "Opening must precede closing"})
@@ -20,7 +28,7 @@ def compare(dataset: Dataset, opening: date, closing: date, *, complete_history:
         exceptions.append({"code": "INCOMPLETE_HISTORY", "record_id": "comparison", "reason": "Confirm complete customer and contract history for both dates; absence cannot otherwise mean zero"})
     for endpoint, snapshot in (("opening", first), ("closing", last)):
         exceptions.extend(dict(e, endpoint=endpoint) for e in snapshot["exceptions"])
-    result = {"run_id": run_id, "definition": DEFINITION, "policy": POLICY,
+    result = {"run_id": run_id, "definition": definition, "policy": POLICY,
               "engine_version": first["engine_version"], "input_sha256": first["input_sha256"],
               "opening_date": opening.isoformat(), "closing_date": closing.isoformat(),
               "opening_run_id": first["run_id"], "closing_run_id": last["run_id"],
@@ -33,6 +41,16 @@ def compare(dataset: Dataset, opening: date, closing: date, *, complete_history:
         ctx.prec = 60
         ctx.rounding = ROUND_HALF_EVEN
         def endpoint(snapshot):
+            if basis == "billing":
+                from types import SimpleNamespace
+                rows = {}
+                for row in snapshot['customers']:
+                    customer = row['customer_id']
+                    if customer in rows:
+                        exceptions.append({'code':'MULTI_CURRENCY_CUSTOMER','record_id':customer,'reason':'Customer has simultaneous currencies; retention policy requires review'})
+                    rows[customer] = SimpleNamespace(customer_id=customer,currency=row['currency'],amount=Decimal(row['mrr']),cadence_months=1,rate=Fraction(int(row['mrr_numerator']),int(row['mrr_denominator'])),
+                        source_contract_ids=[],source_line_ids=row['line_item_ids'],source_credit_ids=row['credit_note_ids'],evidence_ids=row['evidence_ids'])
+                return rows
             ids = {cid for m in snapshot["metrics"].values() for cid in m["contract_ids"]}
             return {c.customer_id: c for c in dataset.contracts if c.id in ids}
         opening_records, closing_records = endpoint(first), endpoint(last)
@@ -45,15 +63,15 @@ def compare(dataset: Dataset, opening: date, closing: date, *, complete_history:
         if exceptions:
             return result
         def monthly(contract):
-            return contract.amount / Decimal(contract.cadence_months) if contract else Decimal(0)
+            return (contract.rate if basis == "billing" else Fraction(contract.amount)/contract.cadence_months) if contract else Fraction(0)
         def money(value):
-            return str(value.quantize(Decimal("0.01")))
+            return exact_money(value)
         def ratio(value, denominator):
-            return format((value / denominator).quantize(Decimal("0.00000001")), "f") if denominator else None
+            return exact_ratio(value,denominator)
         currencies = sorted(set(first["metrics"]) | set(last["metrics"]))
         metrics = {}
         for currency in currencies:
-            opening_total = ending_total = expansion = contraction = churn = new_revenue = Decimal(0)
+            opening_total = ending_total = expansion = contraction = churn = new_revenue = Fraction(0)
             opening_logos = lost_logos = 0
             movements = []
             for customer in sorted(old.keys() | new.keys()):
@@ -83,8 +101,10 @@ def compare(dataset: Dataset, opening: date, closing: date, *, complete_history:
                 records = [c for c in (opening_records.get(customer), closing_records.get(customer)) if c is not None]
                 movements.append({"customer_id": customer, "movement": kind,
                                   "opening_mrr": money(av), "closing_mrr": money(bv),
-                                  "contract_ids": sorted({c.id for c in records}),
-                                  "evidence_ids": sorted({c.evidence_id for c in records})})
+                                  "contract_ids": sorted({cid for c in records for cid in (c.source_contract_ids if basis == "billing" else [c.id])}),
+                                  "line_item_ids": sorted({lid for c in records for lid in (c.source_line_ids if basis == "billing" else [])}),
+                                  "credit_note_ids": sorted({cid for c in records for cid in (c.source_credit_ids if basis == "billing" else [])}),
+                                  "evidence_ids": sorted({eid for c in records for eid in (c.evidence_ids if basis == "billing" else [c.evidence_id])})})
             gross_loss = churn + contraction
             opening_arr = Decimal(first["metrics"].get(currency, {"arr": "0"})["arr"])
             closing_arr = Decimal(last["metrics"].get(currency, {"arr": "0"})["arr"])

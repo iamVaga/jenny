@@ -153,3 +153,16 @@ def test_path_escape(tmp_path):
 def test_no_eligible_contracts(raw):
     raw["contracts"] = []
     assert run(raw)["metrics"] == {}
+
+
+def test_annual_half_cent_aggregation_regression(raw):
+    raw['contracts']=[];raw['customers']=[]
+    for index in range(3):
+        customer=f'customer-{index}'
+        raw['customers'].append({'id':customer,'organization_id':'org','name':customer})
+        raw['contracts'].append({'id':f'contract-{index}','organization_id':'org','customer_id':customer,
+            'currency':'USD','amount':'0.02','cadence_months':12,'classification':'fixed_recurring',
+            'start':'2026-01-01','end':'2027-01-01','evidence_id':'e1'})
+    # 3 * 0.02 / 12 = 0.005 exactly; half-even must round to zero cents.
+    assert metric(raw)['mrr']=='0.00'
+    assert metric(raw)['arr']=='0.00'

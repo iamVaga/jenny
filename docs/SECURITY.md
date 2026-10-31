@@ -1,30 +1,32 @@
-# Security baseline and limitations
+# Security baseline
 
-Synthetic sample only. No outbound requests, secrets, telemetry, macros or spreadsheet
-exports. CLI restricts resolved input paths to --root (default current directory), reads
-at most 5 MiB, rejects duplicate JSON keys and malformed schemas, and avoids printing
-raw invalid inputs. Inputs and generated stdout are separate; source data is not rewritten.
-JSON is not an Excel formula execution surface. CSV/XLSX injection protection must be
-implemented with the future exporters. Do not paste raw untrusted strings into spreadsheets.
+Synthetic fixtures only. The runtime performs no network requests, telemetry, authentication,
+external service calls, secret lookup or LLM inference. All output is local unless a user
+explicitly publishes source through development tooling. No real customer data is bundled.
+CLI JSON results intentionally include financial totals/IDs; there are no routine application
+logs echoing malformed inputs, sensitive records or arbitrary path details.
 
-This is not an OS sandbox: authorized callers choose root; symlink/path races and
-resource exhaustion beyond the file size bound are not fully mitigated. Output contains
-financial totals and IDs and must be handled as sensitive if real data is used later.
-There is no authentication, encryption, access audit, immutable store or certification.
-Schema validation and file hashes do not establish economic completeness or authenticity.
+Input files resolve under --root. Output files and stores resolve within the workspace;
+source inputs cannot be saved from inside the output store, and workbook outputs cannot
+replace snapshot members. The CLI reads at most 5 MiB, rejects duplicate JSON keys, malformed
+schemas, floats as money, nonfinite values and extreme precision/exponents before arithmetic.
+Retention/report history is bounded to 240 months. Identity conflicts and ambiguous joins
+produce exceptions. Third-party data never grants access or instructions to the runtime.
 
+Workbook source strings are forced to Excel string cells, including strings starting with
+=,+,-,@. Only internally constructed Formula values become formulas; no source text is
+interpolated into formulas. No macros or external workbook links are produced. XML control
+characters are escaped visibly, not executed. Original source bytes remain in the snapshot.
+No CSV or arbitrary XLSX ingestion is supported; this avoids implying safety for those formats.
 
-## Snapshot slice update
+Snapshot directories are append-only through the API, with integrity checks and full replay.
+Export uses a validated temporary workbook and exclusive destination creation, never overwrite.
+The final copy is not an atomic durable transaction; a process crash could leave a partial
+export, which must be removed/re-exported by the user. Saved JSON remains the authoritative data.
 
-Added ingestion.py for shared strict JSON parsing and store.py for retained raw-input
-snapshots, manifests and verified replay. CLI supports analyze --save and replay by
-storage ID. Outputs remain inside the workspace and outside Git. Storage is append-only
-through the API, not OS-enforced immutable storage; caller-supplied evidence hashes
-remain unverified. Earlier first-slice persistence limitations above are superseded
-by this update. Other financial limitations remain unchanged.
-
-Full local suite: 60 passed, including 14 new snapshot/replay cases covering round-trip,
-idempotence, input/result/manifest alteration, refusal to overwrite corrupted runs,
-raw-byte identity, invalid IDs, recalculation mismatches, CLI replay, workspace bounds
-and retained review exceptions. This is not a 60-scenario financial benchmark.
-GitHub Actions is configured for Python 3.12/3.13; remote results are not yet verified.
+This is not an OS sandbox. A trusted library caller can choose file paths; the CLI provides
+containment guards. Local symlink/path races, resource exhaustion beyond current bounds,
+permissions, backups, disk encryption, authentication, access audit and malicious privileged
+actors are not comprehensively addressed. Exact rational arithmetic can be computationally
+costly on adversarial normalization denominators. Do not expose this CLI as an untrusted public
+service. No SOC 2, production-grade security or financial-compliance certification is claimed.

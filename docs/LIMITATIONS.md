@@ -1,23 +1,35 @@
-# Current limitations
+# Known limitations
 
-Implemented: typed contracts, contract-snapshot MRR/ARR, per-currency opening-cohort
-retention/churn, movement attribution, ARR bridge, local snapshot persistence and replay
-for analyze results. Storage is append-only through the API, not OS-enforced immutable.
-Compare results cannot yet be saved/replayed by storage ID.
+This is the v0.1 local backend, not a production SaaS service. No frontend, deployment,
+real customer testing, authentication, accounting-system connectors, recognition engine,
+automatic methodology inference, tax accounting or compliance certification is included.
+JSON is the input contract; source-system CSV/XLSX adapters remain future work.
 
-Still absent: billing-derived metrics and ingestion, recognized revenue, acquisition
-cohort matrices, management comparisons, independent accounting reconciliation,
-FX conversion, Excel export and a 50-scenario financial benchmark. Preliminary unused
-schemas do not imply these features exist. No production security or compliance claims.
+Usage/hybrid revenue requires explicit exclusion or classification/splitting. Billing lines
+require an analyst-supplied normalization period; missing service periods never receive an
+invented fallback. Parent/subsidiary and reseller consolidation remain review boundaries.
+Approved rename/duplicate mappings work, but unmarked duplicate entities cannot be inferred.
+Linked billing windows must match contractual net rates; legitimate unusual amendments need
+explicit source representation or review rather than automatic overrides.
 
-All identity mappings and multiple active fixed commitments require review. Unmarked
-duplicate customer identities cannot be detected. Currency codes are syntax checked.
-External evidence hashes remain assertions. Completeness is caller-declared and cannot
-be established from the supplied dataset alone. Historical events between comparison
-endpoints are not measured. Reactivations are new to the opening cohort, not necessarily
-new acquisitions. See RETENTION.md for treatment of zero commitments and rounding.
+History and accounting-period completeness are caller assertions. Cohorts are first observed,
+not independently verified lifetime acquisition. A positive month-end baseline is required;
+customers that begin and churn within that initial month require review. Retention measures
+endpoint changes, not every intervening churn/reactivation. Simultaneous currencies and
+currency migrations for a customer require retention review. No FX-neutral retention is inferred.
 
-Blocking input/identity/FX-policy errors suppress metrics. Empty opening cohorts return
-null ratios with review exceptions and provisional bridge amounts. No independent
-validation is implied by CALCULATED_UNRECONCILED. Financial policy approval remains
-necessary before analyst reliance, including reporting precision and eligibility.
+FX uses exact-date direct rates only for snapshot reporting. Source-currency retention remains
+separate. Currency codes are syntax checked, and two-decimal monetary reporting is an explicit
+provisional policy. Original values and exact rate fractions remain available in JSON/source
+records. Engine schema/definition changes can invalidate old replay; use matching source versions.
+
+External evidence and control independence/authenticity are not verified. Record-level lineage
+is implemented; cell-level spreadsheet lineage is not claimed. Storage is not OS-enforced
+immutable, cryptographically signed or encrypted. Inputs/results are bounded to 5 MiB and
+reports/cohorts to 240 months. Very large or text-heavy Excel exports fail explicitly.
+
+Excel is a presentation/check workbook. Python values are independently calculated; formulas
+require recalculation and editing workbook source cells does not rerun Python. Excel numeric
+outputs are restricted to 15 significant digits; original precision is retained as source text.
+Formula recalculation was tested in the bundled spreadsheet engine, not native Microsoft Excel.
+There is no claim of production readiness or independent validation based on tests alone.

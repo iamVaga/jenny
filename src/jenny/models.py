@@ -1,8 +1,9 @@
 """Validated data contracts. Dates are ISO calendar dates; money is decimal text."""
 from datetime import date
 from decimal import Decimal
+import re
 from typing import Annotated, Literal
-from pydantic import BaseModel, ConfigDict, Field, BeforeValidator, model_validator
+from pydantic import BaseModel, ConfigDict, Field, BeforeValidator, model_validator, StrictBool
 
 
 def decimal_input(value):
@@ -11,6 +12,21 @@ def decimal_input(value):
     return value
 
 
+def calendar_date(value):
+    if type(value) is date:
+        return value
+    if not isinstance(value,str) or re.fullmatch(r"\d{4}-\d{2}-\d{2}",value) is None:
+        raise ValueError("Use an ISO calendar date YYYY-MM-DD")
+    return date.fromisoformat(value)
+
+
+def cadence(value):
+    if type(value) is not int:
+        raise ValueError("Cadence must be integer months")
+    return value
+
+
+CalendarDate = Annotated[date, BeforeValidator(calendar_date)]
 Amount = Annotated[Decimal, BeforeValidator(decimal_input), Field(allow_inf_nan=False)]
 Nonnegative = Annotated[Amount, Field(ge=0)]
 Positive = Annotated[Amount, Field(gt=0)]
@@ -44,12 +60,12 @@ class CustomerIdentityMapping(Record):
     source_customer_id: Identifier
     canonical_customer_id: Identifier | None = None
     relationship: Literal["rename", "duplicate", "parent", "reseller", "ambiguous"]
-    approved: bool = False
+    approved: StrictBool = False
 
 
 class PeriodRecord(Record):
-    start: date
-    end: date  # exclusive
+    start: CalendarDate
+    end: CalendarDate  # exclusive
 
     @model_validator(mode="after")
     def ordered(self):
@@ -63,9 +79,9 @@ class Contract(PeriodRecord):
     customer_id: Identifier
     currency: Currency
     amount: Nonnegative  # net commitment for one cadence, excluding tax
-    cadence_months: Literal[1, 12]
+    cadence_months: Annotated[Literal[1, 12], BeforeValidator(cadence)]
     classification: Literal["fixed_recurring", "one_time", "usage", "hybrid", "unknown"]
-    cancelled_on: date | None = None
+    cancelled_on: CalendarDate | None = None
     evidence_id: Identifier
 
     @model_validator(mode="after")
@@ -82,22 +98,39 @@ class Subscription(Record):
 
 class Invoice(Record):
     customer_id: Identifier
-    invoice_date: date
-    payment_date: date | None = None
+    invoice_date: CalendarDate
+    payment_date: CalendarDate | None = None
     currency: Currency
     amount: Amount
     evidence_id: Identifier
 
 
-class InvoiceLineItem(PeriodRecord):
+class InvoiceLineItem(Record):
     invoice_id: Identifier
-    amount: Amount
+    currency: Currency
+    amount: Nonnegative
+    discount: Nonnegative = Decimal("0")
+    tax: Nonnegative = Decimal("0")
     classification: Literal["fixed_recurring", "one_time", "usage", "hybrid", "unknown"]
+    service_start: CalendarDate | None = None
+    service_end: CalendarDate | None = None
+    normalization_months: Positive | None = None
+    contract_id: Identifier | None = None
+    evidence_id: Identifier
+
+    @model_validator(mode="after")
+    def valid_line(self):
+        if self.discount > self.amount:
+            raise ValueError("Discount exceeds line amount")
+        if self.service_start and self.service_end and self.service_end <= self.service_start:
+            raise ValueError("Service end must be after start")
+        return self
 
 
 class CreditNote(Record):
     invoice_id: Identifier
-    issue_date: date
+    line_item_id: Identifier | None = None
+    issue_date: CalendarDate
     currency: Currency
     amount: Nonnegative
     evidence_id: Identifier
@@ -105,14 +138,15 @@ class CreditNote(Record):
 
 class Refund(Record):
     invoice_id: Identifier
-    payment_date: date
+    credit_note_id: Identifier | None = None
+    payment_date: CalendarDate
     currency: Currency
     amount: Nonnegative
     evidence_id: Identifier
 
 
 class CurrencyRate(Record):
-    rate_date: date
+    rate_date: CalendarDate
     source_currency: Currency
     target_currency: Currency
     rate: Positive
@@ -122,12 +156,12 @@ class CurrencyRate(Record):
 class RevenueAdjustment(PeriodRecord):
     currency: Currency
     amount: Amount
-    reason: Identifier
+    reason: Literal["deferred_revenue", "accrued_revenue", "credits", "timing", "taxes", "fx", "recognition", "other"]
     evidence_id: Identifier
 
 
 class AccountingPeriod(PeriodRecord):
-    complete: bool
+    complete: StrictBool
 
 
 class FinancialMetricDefinition(Record):
@@ -137,7 +171,7 @@ class FinancialMetricDefinition(Record):
 
 class CalculationRun(Record):
     input_sha256: str
-    measurement_date: date
+    measurement_date: CalendarDate
     definition_id: Identifier
     engine_version: Identifier
 
@@ -159,6 +193,29 @@ class ReviewException(BaseModel):
     reason: str
 
 
+class AccountingControl(PeriodRecord):
+    currency: Currency
+    amount: Amount
+    basis: Literal["recognized_revenue", "billing_net", "general_ledger"]
+    materiality: Nonnegative = Decimal("0.01")
+    evidence_id: Identifier
+
+
+class ManagementMetric(Record):
+    measurement_date: CalendarDate
+    currency: Currency
+    metric: Literal["mrr", "arr"]
+    amount: Nonnegative
+    methodology: str | None = None
+    evidence_id: Identifier
+
+
+class BillingPolicy(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    usage: Literal["exclude", "review"] = "review"
+    credits: Literal["deduct", "exclude"] = "deduct"
+
+
 class Dataset(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True)
     organization: Organization
@@ -166,3 +223,14 @@ class Dataset(BaseModel):
     contracts: tuple[Contract, ...]
     evidence: tuple[EvidenceReference, ...]
     mappings: tuple[CustomerIdentityMapping, ...] = ()
+
+    invoices: tuple[Invoice, ...] = ()
+    line_items: tuple[InvoiceLineItem, ...] = ()
+    credit_notes: tuple[CreditNote, ...] = ()
+    refunds: tuple[Refund, ...] = ()
+    currency_rates: tuple[CurrencyRate, ...] = ()
+    adjustments: tuple[RevenueAdjustment, ...] = ()
+    accounting_periods: tuple[AccountingPeriod, ...] = ()
+    controls: tuple[AccountingControl, ...] = ()
+    management_metrics: tuple[ManagementMetric, ...] = ()
+    billing_policy: BillingPolicy = BillingPolicy()

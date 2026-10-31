@@ -1,0 +1,4848 @@
+[
+  {
+    "name": "annual subscription",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {
+      "metrics.USD.mrr": "100.00",
+      "metrics.USD.arr": "1200.00"
+    },
+    "expected_codes": [],
+    "invalid": false
+  },
+  {
+    "name": "monthly subscription",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "100",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "100",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "1",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {
+      "metrics.USD.mrr": "100.00",
+      "metrics.USD.arr": "1200.00"
+    },
+    "expected_codes": [],
+    "invalid": false
+  },
+  {
+    "name": "six month prepayment",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "600",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "600",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "6",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {
+      "metrics.USD.mrr": "100.00",
+      "metrics.USD.arr": "1200.00"
+    },
+    "expected_codes": [],
+    "invalid": false
+  },
+  {
+    "name": "quarterly prepayment",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "300",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "300",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "3",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {
+      "metrics.USD.mrr": "100.00",
+      "metrics.USD.arr": "1200.00"
+    },
+    "expected_codes": [],
+    "invalid": false
+  },
+  {
+    "name": "half month proration",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "50",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "50",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "0.5",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {
+      "metrics.USD.mrr": "100.00",
+      "metrics.USD.arr": "1200.00"
+    },
+    "expected_codes": [],
+    "invalid": false
+  },
+  {
+    "name": "explicit zero commitment",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "0",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "0",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "1",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {
+      "metrics.USD.mrr": "0.00",
+      "metrics.USD.arr": "0.00"
+    },
+    "expected_codes": [],
+    "invalid": false
+  },
+  {
+    "name": "annual fractional normalization",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "100",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "100",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {
+      "metrics.USD.mrr": "8.33",
+      "metrics.USD.arr": "99.96"
+    },
+    "expected_codes": [],
+    "invalid": false
+  },
+  {
+    "name": "half even lower tie",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1.005",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1.005",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "1",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {
+      "metrics.USD.mrr": "1.00",
+      "metrics.USD.arr": "12.00"
+    },
+    "expected_codes": [],
+    "invalid": false
+  },
+  {
+    "name": "half even upper tie",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1.015",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1.015",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "1",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {
+      "metrics.USD.mrr": "1.02",
+      "metrics.USD.arr": "12.24"
+    },
+    "expected_codes": [],
+    "invalid": false
+  },
+  {
+    "name": "net contractual discount",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1080",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e",
+          "discount": "120"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {
+      "metrics.USD.mrr": "90.00"
+    },
+    "expected_codes": [],
+    "invalid": false
+  },
+  {
+    "name": "tax excluded from recurring run rate",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1440",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e",
+          "tax": "240"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {
+      "metrics.USD.mrr": "100.00"
+    },
+    "expected_codes": [],
+    "invalid": false
+  },
+  {
+    "name": "one time implementation excluded",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "one_time",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {
+      "metrics": {}
+    },
+    "expected_codes": [],
+    "invalid": false
+  },
+  {
+    "name": "usage explicitly excluded",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "usage",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {
+      "metrics": {}
+    },
+    "expected_codes": [],
+    "invalid": false
+  },
+  {
+    "name": "hybrid requires split",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "hybrid",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {},
+    "expected_codes": [
+      "CLASSIFICATION_REVIEW"
+    ],
+    "invalid": false
+  },
+  {
+    "name": "unknown classification",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "unknown",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {},
+    "expected_codes": [
+      "CLASSIFICATION_REVIEW"
+    ],
+    "invalid": false
+  },
+  {
+    "name": "usage review policy",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "usage",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "review",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {},
+    "expected_codes": [
+      "USAGE_POLICY_REVIEW"
+    ],
+    "invalid": false
+  },
+  {
+    "name": "missing service_start",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {},
+    "expected_codes": [
+      "MISSING_SERVICE_PERIOD"
+    ],
+    "invalid": false
+  },
+  {
+    "name": "missing service_end",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {},
+    "expected_codes": [
+      "MISSING_SERVICE_PERIOD"
+    ],
+    "invalid": false
+  },
+  {
+    "name": "missing normalization_months",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {},
+    "expected_codes": [
+      "MISSING_SERVICE_PERIOD"
+    ],
+    "invalid": false
+  },
+  {
+    "name": "duplicate invoices",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        },
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {},
+    "expected_codes": [
+      "DUPLICATE_ID"
+    ],
+    "invalid": false
+  },
+  {
+    "name": "duplicate customers",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        },
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {},
+    "expected_codes": [
+      "DUPLICATE_ID"
+    ],
+    "invalid": false
+  },
+  {
+    "name": "duplicate line_items",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        },
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {},
+    "expected_codes": [
+      "DUPLICATE_ID"
+    ],
+    "invalid": false
+  },
+  {
+    "name": "duplicate evidence",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        },
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {},
+    "expected_codes": [
+      "DUPLICATE_ID"
+    ],
+    "invalid": false
+  },
+  {
+    "name": "missing invoice customer",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "missing",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {},
+    "expected_codes": [
+      "MISSING_CUSTOMER"
+    ],
+    "invalid": false
+  },
+  {
+    "name": "missing source evidence",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "missing"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {},
+    "expected_codes": [
+      "MISSING_EVIDENCE"
+    ],
+    "invalid": false
+  },
+  {
+    "name": "line invoice currency mismatch",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "EUR",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {},
+    "expected_codes": [
+      "CURRENCY_MISMATCH"
+    ],
+    "invalid": false
+  },
+  {
+    "name": "negative invoice",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "-1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {},
+    "expected_codes": [
+      "NEGATIVE_INVOICE"
+    ],
+    "invalid": false
+  },
+  {
+    "name": "invoice total mismatch",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1199",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {},
+    "expected_codes": [
+      "INVOICE_TOTAL_MISMATCH"
+    ],
+    "invalid": false
+  },
+  {
+    "name": "missing invoice detail",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {},
+    "expected_codes": [
+      "MISSING_INVOICE_LINES"
+    ],
+    "invalid": false
+  },
+  {
+    "name": "float money",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": 12.5,
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {},
+    "expected_codes": [],
+    "invalid": true
+  },
+  {
+    "name": "invalid service dates",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2025-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {},
+    "expected_codes": [],
+    "invalid": true
+  },
+  {
+    "name": "negative line",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "-1",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {},
+    "expected_codes": [],
+    "invalid": true
+  },
+  {
+    "name": "zero denominator",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "0",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {},
+    "expected_codes": [],
+    "invalid": true
+  },
+  {
+    "name": "discount exceeds line",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e",
+          "discount": "1201"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {},
+    "expected_codes": [],
+    "invalid": true
+  },
+  {
+    "name": "matched credit deducted",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      },
+      "credit_notes": [
+        {
+          "id": "credit",
+          "invoice_id": "invoice",
+          "line_item_id": "line",
+          "issue_date": "2026-02-01",
+          "currency": "USD",
+          "amount": "120",
+          "evidence_id": "e"
+        }
+      ]
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {
+      "metrics.USD.mrr": "90.00"
+    },
+    "expected_codes": [],
+    "invalid": false
+  },
+  {
+    "name": "credit exclusion policy",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "exclude"
+      },
+      "credit_notes": [
+        {
+          "id": "credit",
+          "invoice_id": "invoice",
+          "line_item_id": "line",
+          "issue_date": "2026-02-01",
+          "currency": "USD",
+          "amount": "120",
+          "evidence_id": "e"
+        }
+      ]
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {
+      "metrics.USD.mrr": "100.00"
+    },
+    "expected_codes": [],
+    "invalid": false
+  },
+  {
+    "name": "unmatched credit",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      },
+      "credit_notes": [
+        {
+          "id": "credit",
+          "invoice_id": "invoice",
+          "line_item_id": "missing",
+          "issue_date": "2026-02-01",
+          "currency": "USD",
+          "amount": "120",
+          "evidence_id": "e"
+        }
+      ]
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {},
+    "expected_codes": [
+      "UNMATCHED_CREDIT"
+    ],
+    "invalid": false
+  },
+  {
+    "name": "credit exceeds source",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      },
+      "credit_notes": [
+        {
+          "id": "credit",
+          "invoice_id": "invoice",
+          "line_item_id": "line",
+          "issue_date": "2026-02-01",
+          "currency": "USD",
+          "amount": "1300",
+          "evidence_id": "e"
+        }
+      ]
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {},
+    "expected_codes": [
+      "EXCESS_CREDIT"
+    ],
+    "invalid": false
+  },
+  {
+    "name": "refund is not double deducted",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      },
+      "credit_notes": [
+        {
+          "id": "credit",
+          "invoice_id": "invoice",
+          "line_item_id": "line",
+          "issue_date": "2026-02-01",
+          "currency": "USD",
+          "amount": "120",
+          "evidence_id": "e"
+        }
+      ],
+      "refunds": [
+        {
+          "id": "refund",
+          "invoice_id": "invoice",
+          "credit_note_id": "credit",
+          "payment_date": "2026-03-01",
+          "currency": "USD",
+          "amount": "120",
+          "evidence_id": "e"
+        }
+      ]
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {
+      "metrics.USD.mrr": "90.00"
+    },
+    "expected_codes": [],
+    "invalid": false
+  },
+  {
+    "name": "unmatched refund review",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      },
+      "refunds": [
+        {
+          "id": "refund",
+          "invoice_id": "invoice",
+          "payment_date": "2026-03-01",
+          "currency": "USD",
+          "amount": "120",
+          "evidence_id": "e"
+        }
+      ]
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {},
+    "expected_codes": [
+      "UNMATCHED_REFUND"
+    ],
+    "invalid": false
+  },
+  {
+    "name": "renamed customer approved",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        },
+        {
+          "id": "canonical",
+          "organization_id": "org",
+          "name": "Synthetic Canonical"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      },
+      "mappings": [
+        {
+          "id": "map",
+          "source_customer_id": "customer",
+          "canonical_customer_id": "canonical",
+          "relationship": "rename",
+          "approved": true
+        }
+      ]
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {
+      "metrics.USD.mrr": "100.00"
+    },
+    "expected_codes": [],
+    "invalid": false
+  },
+  {
+    "name": "duplicate customer approved",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        },
+        {
+          "id": "canonical",
+          "organization_id": "org",
+          "name": "Synthetic Canonical"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      },
+      "mappings": [
+        {
+          "id": "map",
+          "source_customer_id": "customer",
+          "canonical_customer_id": "canonical",
+          "relationship": "duplicate",
+          "approved": true
+        }
+      ]
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {
+      "metrics.USD.mrr": "100.00"
+    },
+    "expected_codes": [],
+    "invalid": false
+  },
+  {
+    "name": "ambiguous identity",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        },
+        {
+          "id": "canonical",
+          "organization_id": "org",
+          "name": "Synthetic Canonical"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      },
+      "mappings": [
+        {
+          "id": "map",
+          "source_customer_id": "customer",
+          "canonical_customer_id": null,
+          "relationship": "ambiguous",
+          "approved": false
+        }
+      ]
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {},
+    "expected_codes": [
+      "IDENTITY_REVIEW"
+    ],
+    "invalid": false
+  },
+  {
+    "name": "parent consolidation",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        },
+        {
+          "id": "canonical",
+          "organization_id": "org",
+          "name": "Synthetic Canonical"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      },
+      "mappings": [
+        {
+          "id": "map",
+          "source_customer_id": "customer",
+          "canonical_customer_id": "canonical",
+          "relationship": "parent",
+          "approved": true
+        }
+      ]
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {},
+    "expected_codes": [
+      "IDENTITY_REVIEW"
+    ],
+    "invalid": false
+  },
+  {
+    "name": "reseller arrangement",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        },
+        {
+          "id": "canonical",
+          "organization_id": "org",
+          "name": "Synthetic Canonical"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      },
+      "mappings": [
+        {
+          "id": "map",
+          "source_customer_id": "customer",
+          "canonical_customer_id": "canonical",
+          "relationship": "reseller",
+          "approved": true
+        }
+      ]
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {},
+    "expected_codes": [
+      "IDENTITY_REVIEW"
+    ],
+    "invalid": false
+  },
+  {
+    "name": "incorrect identity target",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        },
+        {
+          "id": "canonical",
+          "organization_id": "org",
+          "name": "Synthetic Canonical"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      },
+      "mappings": [
+        {
+          "id": "map",
+          "source_customer_id": "customer",
+          "canonical_customer_id": "missing",
+          "relationship": "rename",
+          "approved": true
+        }
+      ]
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {},
+    "expected_codes": [
+      "IDENTITY_REVIEW"
+    ],
+    "invalid": false
+  },
+  {
+    "name": "parent subsidiary unresolved",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer",
+          "parent_id": "parent"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {},
+    "expected_codes": [
+      "IDENTITY_REVIEW"
+    ],
+    "invalid": false
+  },
+  {
+    "name": "direct FX conversion",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      },
+      "currency_rates": [
+        {
+          "id": "fx",
+          "rate_date": "2026-06-01",
+          "source_currency": "USD",
+          "target_currency": "EUR",
+          "rate": "0.5",
+          "evidence_id": "e"
+        }
+      ]
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01",
+      "reporting_currency": "EUR"
+    },
+    "expected": {
+      "snapshot.reporting_metrics.mrr": "50.00"
+    },
+    "expected_codes": [],
+    "invalid": false
+  },
+  {
+    "name": "missing exchange rate",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01",
+      "reporting_currency": "EUR"
+    },
+    "expected": {},
+    "expected_codes": [
+      "MISSING_OR_AMBIGUOUS_FX"
+    ],
+    "invalid": false
+  },
+  {
+    "name": "clean accounting reconciliation",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      },
+      "accounting_periods": [
+        {
+          "id": "period",
+          "start": "2026-01-01",
+          "end": "2027-01-01",
+          "complete": true
+        }
+      ],
+      "controls": [
+        {
+          "id": "gl",
+          "start": "2026-01-01",
+          "end": "2027-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "basis": "general_ledger",
+          "evidence_id": "e"
+        }
+      ]
+    },
+    "request": {
+      "action": "reconcile",
+      "definition": "billing_v1",
+      "opening": "2026-01-01",
+      "closing": "2027-01-01"
+    },
+    "expected": {
+      "reconciliation.results.0.status": "RECONCILED"
+    },
+    "expected_codes": [],
+    "invalid": false
+  },
+  {
+    "name": "unexplained GL difference",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      },
+      "accounting_periods": [
+        {
+          "id": "period",
+          "start": "2026-01-01",
+          "end": "2027-01-01",
+          "complete": true
+        }
+      ],
+      "controls": [
+        {
+          "id": "gl",
+          "start": "2026-01-01",
+          "end": "2027-01-01",
+          "currency": "USD",
+          "amount": "1100",
+          "basis": "general_ledger",
+          "evidence_id": "e"
+        }
+      ]
+    },
+    "request": {
+      "action": "reconcile",
+      "definition": "billing_v1",
+      "opening": "2026-01-01",
+      "closing": "2027-01-01"
+    },
+    "expected": {
+      "reconciliation.results.0.status": "UNRECONCILED"
+    },
+    "expected_codes": [
+      "RECONCILIATION_REVIEW"
+    ],
+    "invalid": false
+  },
+  {
+    "name": "deferred revenue explanation",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      },
+      "accounting_periods": [
+        {
+          "id": "period",
+          "start": "2026-01-01",
+          "end": "2027-01-01",
+          "complete": true
+        }
+      ],
+      "controls": [
+        {
+          "id": "gl",
+          "start": "2026-01-01",
+          "end": "2027-01-01",
+          "currency": "USD",
+          "amount": "1100",
+          "basis": "general_ledger",
+          "evidence_id": "e"
+        }
+      ],
+      "adjustments": [
+        {
+          "id": "adjustment",
+          "start": "2026-01-01",
+          "end": "2027-01-01",
+          "currency": "USD",
+          "amount": "-100",
+          "reason": "deferred_revenue",
+          "evidence_id": "e"
+        }
+      ]
+    },
+    "request": {
+      "action": "reconcile",
+      "definition": "billing_v1",
+      "opening": "2026-01-01",
+      "closing": "2027-01-01"
+    },
+    "expected": {
+      "reconciliation.results.0.status": "RECONCILED_WITH_ADJUSTMENTS"
+    },
+    "expected_codes": [],
+    "invalid": false
+  },
+  {
+    "name": "accrued revenue explanation",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      },
+      "accounting_periods": [
+        {
+          "id": "period",
+          "start": "2026-01-01",
+          "end": "2027-01-01",
+          "complete": true
+        }
+      ],
+      "controls": [
+        {
+          "id": "gl",
+          "start": "2026-01-01",
+          "end": "2027-01-01",
+          "currency": "USD",
+          "amount": "1300",
+          "basis": "general_ledger",
+          "evidence_id": "e"
+        }
+      ],
+      "adjustments": [
+        {
+          "id": "adjustment",
+          "start": "2026-01-01",
+          "end": "2027-01-01",
+          "currency": "USD",
+          "amount": "100",
+          "reason": "accrued_revenue",
+          "evidence_id": "e"
+        }
+      ]
+    },
+    "request": {
+      "action": "reconcile",
+      "definition": "billing_v1",
+      "opening": "2026-01-01",
+      "closing": "2027-01-01"
+    },
+    "expected": {
+      "reconciliation.results.0.status": "RECONCILED_WITH_ADJUSTMENTS"
+    },
+    "expected_codes": [],
+    "invalid": false
+  },
+  {
+    "name": "incomplete accounting period",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      },
+      "accounting_periods": [
+        {
+          "id": "period",
+          "start": "2026-01-01",
+          "end": "2027-01-01",
+          "complete": false
+        }
+      ],
+      "controls": [
+        {
+          "id": "gl",
+          "start": "2026-01-01",
+          "end": "2027-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "basis": "general_ledger",
+          "evidence_id": "e"
+        }
+      ]
+    },
+    "request": {
+      "action": "reconcile",
+      "definition": "billing_v1",
+      "opening": "2026-01-01",
+      "closing": "2027-01-01"
+    },
+    "expected": {
+      "reconciliation.results.0.status": "INSUFFICIENT_DATA"
+    },
+    "expected_codes": [
+      "INCOMPLETE_ACCOUNTING_PERIOD",
+      "RECONCILIATION_REVIEW"
+    ],
+    "invalid": false
+  },
+  {
+    "name": "unknown conflicting management ARR",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      },
+      "management_metrics": [
+        {
+          "id": "claim",
+          "measurement_date": "2026-06-01",
+          "currency": "USD",
+          "metric": "arr",
+          "amount": "9999",
+          "evidence_id": "e"
+        }
+      ]
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {},
+    "expected_codes": [
+      "MANAGEMENT_CLAIM_REVIEW"
+    ],
+    "invalid": false
+  },
+  {
+    "name": "future issued billing excluded",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-07-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {
+      "metrics": {}
+    },
+    "expected_codes": [],
+    "invalid": false
+  },
+  {
+    "name": "service end exclusive",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2027-01-01"
+    },
+    "expected": {
+      "metrics": {}
+    },
+    "expected_codes": [],
+    "invalid": false
+  },
+  {
+    "name": "contract clean monthly",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [
+        {
+          "id": "contract",
+          "organization_id": "org",
+          "customer_id": "customer",
+          "currency": "USD",
+          "amount": "100",
+          "cadence_months": 1,
+          "classification": "fixed_recurring",
+          "start": "2026-01-01",
+          "end": "2027-01-01",
+          "cancelled_on": null,
+          "evidence_id": "e"
+        }
+      ],
+      "invoices": [],
+      "line_items": [],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "contract_snapshot_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {
+      "metrics.USD.mrr": "100.00"
+    },
+    "expected_codes": [],
+    "invalid": false
+  },
+  {
+    "name": "contract clean annual",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [
+        {
+          "id": "contract",
+          "organization_id": "org",
+          "customer_id": "customer",
+          "currency": "USD",
+          "amount": "1200",
+          "cadence_months": 12,
+          "classification": "fixed_recurring",
+          "start": "2026-01-01",
+          "end": "2027-01-01",
+          "cancelled_on": null,
+          "evidence_id": "e"
+        }
+      ],
+      "invoices": [],
+      "line_items": [],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "contract_snapshot_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {
+      "metrics.USD.mrr": "100.00"
+    },
+    "expected_codes": [],
+    "invalid": false
+  },
+  {
+    "name": "midperiod cancellation exclusive",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [
+        {
+          "id": "contract",
+          "organization_id": "org",
+          "customer_id": "customer",
+          "currency": "USD",
+          "amount": "100",
+          "cadence_months": 1,
+          "classification": "fixed_recurring",
+          "start": "2026-01-01",
+          "end": "2027-01-01",
+          "cancelled_on": "2026-06-01",
+          "evidence_id": "e"
+        }
+      ],
+      "invoices": [],
+      "line_items": [],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "contract_snapshot_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {
+      "metrics": {}
+    },
+    "expected_codes": [],
+    "invalid": false
+  },
+  {
+    "name": "retained customer",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [
+        {
+          "id": "opening",
+          "organization_id": "org",
+          "customer_id": "customer",
+          "currency": "USD",
+          "amount": "100",
+          "cadence_months": 1,
+          "classification": "fixed_recurring",
+          "start": "2026-01-01",
+          "end": "2026-07-01",
+          "evidence_id": "e"
+        },
+        {
+          "id": "closing",
+          "organization_id": "org",
+          "customer_id": "customer",
+          "currency": "USD",
+          "amount": "100",
+          "cadence_months": 1,
+          "classification": "fixed_recurring",
+          "start": "2026-07-01",
+          "end": "2027-01-01",
+          "evidence_id": "e"
+        }
+      ],
+      "invoices": [],
+      "line_items": [],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "compare",
+      "definition": "contract_snapshot_v1",
+      "opening": "2026-01-01",
+      "closing": "2026-07-01",
+      "complete_history": true
+    },
+    "expected": {
+      "metrics.USD.nrr": "1.00000000",
+      "metrics.USD.grr": "1.00000000"
+    },
+    "expected_codes": [],
+    "invalid": false
+  },
+  {
+    "name": "customer expansion",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [
+        {
+          "id": "opening",
+          "organization_id": "org",
+          "customer_id": "customer",
+          "currency": "USD",
+          "amount": "100",
+          "cadence_months": 1,
+          "classification": "fixed_recurring",
+          "start": "2026-01-01",
+          "end": "2026-07-01",
+          "evidence_id": "e"
+        },
+        {
+          "id": "closing",
+          "organization_id": "org",
+          "customer_id": "customer",
+          "currency": "USD",
+          "amount": "150",
+          "cadence_months": 1,
+          "classification": "fixed_recurring",
+          "start": "2026-07-01",
+          "end": "2027-01-01",
+          "evidence_id": "e"
+        }
+      ],
+      "invoices": [],
+      "line_items": [],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "compare",
+      "definition": "contract_snapshot_v1",
+      "opening": "2026-01-01",
+      "closing": "2026-07-01",
+      "complete_history": true
+    },
+    "expected": {
+      "metrics.USD.nrr": "1.50000000",
+      "metrics.USD.grr": "1.00000000"
+    },
+    "expected_codes": [],
+    "invalid": false
+  },
+  {
+    "name": "customer contraction",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [
+        {
+          "id": "opening",
+          "organization_id": "org",
+          "customer_id": "customer",
+          "currency": "USD",
+          "amount": "100",
+          "cadence_months": 1,
+          "classification": "fixed_recurring",
+          "start": "2026-01-01",
+          "end": "2026-07-01",
+          "evidence_id": "e"
+        },
+        {
+          "id": "closing",
+          "organization_id": "org",
+          "customer_id": "customer",
+          "currency": "USD",
+          "amount": "80",
+          "cadence_months": 1,
+          "classification": "fixed_recurring",
+          "start": "2026-07-01",
+          "end": "2027-01-01",
+          "evidence_id": "e"
+        }
+      ],
+      "invoices": [],
+      "line_items": [],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "compare",
+      "definition": "contract_snapshot_v1",
+      "opening": "2026-01-01",
+      "closing": "2026-07-01",
+      "complete_history": true
+    },
+    "expected": {
+      "metrics.USD.nrr": "0.80000000",
+      "metrics.USD.grr": "0.80000000"
+    },
+    "expected_codes": [],
+    "invalid": false
+  },
+  {
+    "name": "full customer churn",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [
+        {
+          "id": "opening",
+          "organization_id": "org",
+          "customer_id": "customer",
+          "currency": "USD",
+          "amount": "100",
+          "cadence_months": 1,
+          "classification": "fixed_recurring",
+          "start": "2026-01-01",
+          "end": "2026-07-01",
+          "evidence_id": "e"
+        }
+      ],
+      "invoices": [],
+      "line_items": [],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "compare",
+      "definition": "contract_snapshot_v1",
+      "opening": "2026-01-01",
+      "closing": "2026-07-01",
+      "complete_history": true
+    },
+    "expected": {
+      "metrics.USD.nrr": "0.00000000",
+      "metrics.USD.grr": "0.00000000"
+    },
+    "expected_codes": [],
+    "invalid": false
+  },
+  {
+    "name": "partial revenue churn",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [
+        {
+          "id": "opening",
+          "organization_id": "org",
+          "customer_id": "customer",
+          "currency": "USD",
+          "amount": "200",
+          "cadence_months": 1,
+          "classification": "fixed_recurring",
+          "start": "2026-01-01",
+          "end": "2026-07-01",
+          "evidence_id": "e"
+        },
+        {
+          "id": "closing",
+          "organization_id": "org",
+          "customer_id": "customer",
+          "currency": "USD",
+          "amount": "100",
+          "cadence_months": 1,
+          "classification": "fixed_recurring",
+          "start": "2026-07-01",
+          "end": "2027-01-01",
+          "evidence_id": "e"
+        }
+      ],
+      "invoices": [],
+      "line_items": [],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "compare",
+      "definition": "contract_snapshot_v1",
+      "opening": "2026-01-01",
+      "closing": "2026-07-01",
+      "complete_history": true
+    },
+    "expected": {
+      "metrics.USD.nrr": "0.50000000",
+      "metrics.USD.grr": "0.50000000"
+    },
+    "expected_codes": [],
+    "invalid": false
+  },
+  {
+    "name": "one time contract misclassified recurring invoice",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [
+        {
+          "id": "linked",
+          "organization_id": "org",
+          "customer_id": "customer",
+          "currency": "USD",
+          "amount": "100",
+          "cadence_months": 1,
+          "classification": "one_time",
+          "start": "2026-01-01",
+          "end": "2027-01-01",
+          "evidence_id": "e"
+        }
+      ],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e",
+          "contract_id": "linked"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {},
+    "expected_codes": [
+      "CONTRACT_INVOICE_CONFLICT"
+    ],
+    "invalid": false
+  },
+  {
+    "name": "overlapping commitments",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [
+        {
+          "id": "one",
+          "organization_id": "org",
+          "customer_id": "customer",
+          "currency": "USD",
+          "amount": "100",
+          "cadence_months": 1,
+          "classification": "fixed_recurring",
+          "start": "2026-01-01",
+          "end": "2027-01-01",
+          "evidence_id": "e"
+        },
+        {
+          "id": "two",
+          "organization_id": "org",
+          "customer_id": "customer",
+          "currency": "USD",
+          "amount": "100",
+          "cadence_months": 1,
+          "classification": "fixed_recurring",
+          "start": "2026-01-01",
+          "end": "2027-01-01",
+          "evidence_id": "e"
+        }
+      ],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {},
+    "expected_codes": [
+      "OVERLAPPING_COMMITMENTS"
+    ],
+    "invalid": false
+  },
+  {
+    "name": "identity cycle",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        },
+        {
+          "id": "other",
+          "organization_id": "org",
+          "name": "Other synthetic"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      },
+      "mappings": [
+        {
+          "id": "map1",
+          "source_customer_id": "customer",
+          "canonical_customer_id": "other",
+          "relationship": "rename",
+          "approved": true
+        },
+        {
+          "id": "map2",
+          "source_customer_id": "other",
+          "canonical_customer_id": "customer",
+          "relationship": "rename",
+          "approved": true
+        }
+      ]
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {},
+    "expected_codes": [
+      "CYCLIC_IDENTITY"
+    ],
+    "invalid": false
+  },
+  {
+    "name": "conflicting identity mappings",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        },
+        {
+          "id": "a",
+          "organization_id": "org",
+          "name": "a"
+        },
+        {
+          "id": "b",
+          "organization_id": "org",
+          "name": "b"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      },
+      "mappings": [
+        {
+          "id": "map1",
+          "source_customer_id": "customer",
+          "canonical_customer_id": "a",
+          "relationship": "duplicate",
+          "approved": true
+        },
+        {
+          "id": "map2",
+          "source_customer_id": "customer",
+          "canonical_customer_id": "b",
+          "relationship": "duplicate",
+          "approved": true
+        }
+      ]
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {},
+    "expected_codes": [
+      "CONFLICTING_IDENTITY"
+    ],
+    "invalid": false
+  },
+  {
+    "name": "multi currency original totals retained",
+    "input": {
+      "organization": {
+        "id": "org",
+        "name": "Synthetic benchmark"
+      },
+      "customers": [
+        {
+          "id": "customer",
+          "organization_id": "org",
+          "name": "Synthetic Customer"
+        }
+      ],
+      "contracts": [],
+      "invoices": [
+        {
+          "id": "invoice",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "USD",
+          "amount": "1200",
+          "evidence_id": "e"
+        },
+        {
+          "id": "euro",
+          "customer_id": "customer",
+          "invoice_date": "2026-01-01",
+          "currency": "EUR",
+          "amount": "1200",
+          "evidence_id": "e"
+        }
+      ],
+      "line_items": [
+        {
+          "id": "line",
+          "invoice_id": "invoice",
+          "currency": "USD",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        },
+        {
+          "id": "euro-line",
+          "invoice_id": "euro",
+          "currency": "EUR",
+          "amount": "1200",
+          "classification": "fixed_recurring",
+          "service_start": "2026-01-01",
+          "service_end": "2027-01-01",
+          "normalization_months": "12",
+          "evidence_id": "e"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "dataset_id": "synthetic-benchmark-v1",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "source_file": "hand-specified synthetic fixture",
+          "record_id": "record"
+        }
+      ],
+      "billing_policy": {
+        "usage": "exclude",
+        "credits": "deduct"
+      }
+    },
+    "request": {
+      "action": "analyze",
+      "definition": "billing_v1",
+      "as_of": "2026-06-01"
+    },
+    "expected": {
+      "metrics.USD.mrr": "100.00",
+      "metrics.EUR.mrr": "100.00"
+    },
+    "expected_codes": [],
+    "invalid": false
+  }
+]

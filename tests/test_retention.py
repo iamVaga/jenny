@@ -165,10 +165,16 @@ def test_cli_compare(tmp_path, capsys):
     assert json.loads(capsys.readouterr().out)['metrics']['USD']['nrr'] == '1.50000000'
 
 
-def test_cli_rejects_saving_comparison():
-    with pytest.raises(SystemExit) as e:
-        main(['compare','--input','x','--opening','2026-01-01','--closing','2026-07-01','--save'])
-    assert e.value.code == 2
+def test_cli_saves_and_replays_comparison(tmp_path, monkeypatch, capsys):
+    monkeypatch.chdir(tmp_path)
+    Path('history.json').write_text(json.dumps(history([('100','150')])))
+    assert main(['compare','--input','history.json','--opening','2026-01-01','--closing','2026-07-01','--confirm-complete-history','--save']) == 0
+    saved = json.loads(capsys.readouterr().out)
+    assert main(['replay','--run-id',saved['storage_id']]) == 0
+    replayed = json.loads(capsys.readouterr().out)
+    assert replayed['metrics']['USD']['nrr'] == '1.50000000'
+    assert replayed['replay_verified'] is True
+
 
 @pytest.mark.parametrize('opening,closing', [('100','0'),('100','25'),('100','100'),('100','175'),('1200','2400')])
 def test_retention_and_bridge_invariants(opening, closing):
