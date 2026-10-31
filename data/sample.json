@@ -1,0 +1,60 @@
+{
+  "organization": {
+    "id": "org",
+    "name": "Synthetic SaaS"
+  },
+  "customers": [
+    {
+      "id": "monthly",
+      "organization_id": "org",
+      "name": "Synthetic Monthly"
+    },
+    {
+      "id": "annual",
+      "organization_id": "org",
+      "name": "Synthetic Annual"
+    }
+  ],
+  "contracts": [
+    {
+      "id": "c-monthly",
+      "organization_id": "org",
+      "customer_id": "monthly",
+      "currency": "USD",
+      "amount": "100.00",
+      "cadence_months": 1,
+      "classification": "fixed_recurring",
+      "start": "2026-01-01",
+      "end": "2027-01-01",
+      "evidence_id": "e1"
+    },
+    {
+      "id": "c-annual",
+      "organization_id": "org",
+      "customer_id": "annual",
+      "currency": "USD",
+      "amount": "1200.00",
+      "cadence_months": 12,
+      "classification": "fixed_recurring",
+      "start": "2026-01-01",
+      "end": "2027-01-01",
+      "evidence_id": "e2"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "e1",
+      "dataset_id": "synthetic-v1",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "source_file": "hand-authored synthetic fixture",
+      "record_id": "c-monthly"
+    },
+    {
+      "id": "e2",
+      "dataset_id": "synthetic-v1",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "source_file": "hand-authored synthetic fixture",
+      "record_id": "c-annual"
+    }
+  ]
+}
