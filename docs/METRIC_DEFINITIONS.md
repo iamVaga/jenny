@@ -21,3 +21,20 @@ commitment totals. Also decide currency minor units, amendment treatment and con
 eligibility rules. This slice chooses neither policy as universally authoritative.
 Changing methodology requires a new definition ID; its ID and policy enter the run hash.
 Billing definition B, retention, churn, cohorts and ARR bridges remain unimplemented.
+
+
+## Contract comparison slice
+
+retention.py adds contract_retention_v1 with opening-cohort NRR/GRR, logo and revenue
+churn, expansion/contraction and a balanced ARR bridge. See RETENTION.md for formulas,
+rounding residual and explicit completeness assertion. Earlier statements that these
+metrics are unimplemented are superseded here; acquisition cohort matrices remain absent.
+CLI compare preserves source SHA-256 and source record/evidence IDs; saved comparison
+replay is not implemented. Currency migrations and endpoint validation exceptions block
+metrics. Empty opening cohorts return null ratios with provisional bridge amounts.
+
+Checked-in retention.json has four synthetic customer histories with hand-derived
+expectations in retention_expected.json. New tests cover retained/expanded/contracted/
+churned/zero customers, new-cohort exclusion, empty denominators, completeness, date
+ordering, currency migration/separation, exception propagation, rounding, lineage,
+repeatability, CLI and bridge invariants. This is not a 50-scenario financial benchmark.

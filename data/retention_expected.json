@@ -1,0 +1,26 @@
+{
+  "opening_date": "2026-01-01",
+  "closing_date": "2026-07-01",
+  "currency": "USD",
+  "derivation": "Opening 100+100+100=300; ending 150+80+200=430; existing cohort ending 150+80=230; gross loss 100+20=120.",
+  "opening_mrr": "300.00",
+  "closing_mrr": "430.00",
+  "nrr": "0.76666667",
+  "grr": "0.60000000",
+  "gross_revenue_churn": "0.40000000",
+  "net_revenue_churn": "0.23333333",
+  "expansion_mrr": "50.00",
+  "contraction_mrr": "20.00",
+  "churn_mrr": "100.00",
+  "new_mrr": "200.00",
+  "logo_churn": "0.33333333",
+  "arr_bridge": {
+    "opening_arr": "3600.00",
+    "new_arr": "2400.00",
+    "expansion_arr": "600.00",
+    "contraction_arr": "240.00",
+    "churn_arr": "1200.00",
+    "closing_arr": "5160.00",
+    "rounding_residual_arr": "0.00"
+  }
+}

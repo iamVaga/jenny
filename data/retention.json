@@ -1,0 +1,146 @@
+{
+  "organization": {
+    "id": "org",
+    "name": "Synthetic retention"
+  },
+  "customers": [
+    {
+      "id": "customer-0",
+      "organization_id": "org",
+      "name": "customer-0"
+    },
+    {
+      "id": "customer-1",
+      "organization_id": "org",
+      "name": "customer-1"
+    },
+    {
+      "id": "customer-2",
+      "organization_id": "org",
+      "name": "customer-2"
+    },
+    {
+      "id": "customer-3",
+      "organization_id": "org",
+      "name": "customer-3"
+    }
+  ],
+  "contracts": [
+    {
+      "id": "customer-0-a",
+      "organization_id": "org",
+      "customer_id": "customer-0",
+      "amount": "100",
+      "currency": "USD",
+      "cadence_months": 1,
+      "classification": "fixed_recurring",
+      "start": "2026-01-01",
+      "end": "2026-07-01",
+      "evidence_id": "customer-0-a"
+    },
+    {
+      "id": "customer-0-b",
+      "organization_id": "org",
+      "customer_id": "customer-0",
+      "amount": "150",
+      "currency": "USD",
+      "cadence_months": 1,
+      "classification": "fixed_recurring",
+      "start": "2026-07-01",
+      "end": "2027-01-01",
+      "evidence_id": "customer-0-b"
+    },
+    {
+      "id": "customer-1-a",
+      "organization_id": "org",
+      "customer_id": "customer-1",
+      "amount": "100",
+      "currency": "USD",
+      "cadence_months": 1,
+      "classification": "fixed_recurring",
+      "start": "2026-01-01",
+      "end": "2026-07-01",
+      "evidence_id": "customer-1-a"
+    },
+    {
+      "id": "customer-1-b",
+      "organization_id": "org",
+      "customer_id": "customer-1",
+      "amount": "80",
+      "currency": "USD",
+      "cadence_months": 1,
+      "classification": "fixed_recurring",
+      "start": "2026-07-01",
+      "end": "2027-01-01",
+      "evidence_id": "customer-1-b"
+    },
+    {
+      "id": "customer-2-a",
+      "organization_id": "org",
+      "customer_id": "customer-2",
+      "amount": "100",
+      "currency": "USD",
+      "cadence_months": 1,
+      "classification": "fixed_recurring",
+      "start": "2026-01-01",
+      "end": "2026-07-01",
+      "evidence_id": "customer-2-a"
+    },
+    {
+      "id": "customer-3-b",
+      "organization_id": "org",
+      "customer_id": "customer-3",
+      "amount": "200",
+      "currency": "USD",
+      "cadence_months": 1,
+      "classification": "fixed_recurring",
+      "start": "2026-07-01",
+      "end": "2027-01-01",
+      "evidence_id": "customer-3-b"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "customer-0-a",
+      "dataset_id": "synthetic-retention-v1",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "source_file": "synthetic history",
+      "record_id": "customer-0-a"
+    },
+    {
+      "id": "customer-0-b",
+      "dataset_id": "synthetic-retention-v1",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "source_file": "synthetic history",
+      "record_id": "customer-0-b"
+    },
+    {
+      "id": "customer-1-a",
+      "dataset_id": "synthetic-retention-v1",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "source_file": "synthetic history",
+      "record_id": "customer-1-a"
+    },
+    {
+      "id": "customer-1-b",
+      "dataset_id": "synthetic-retention-v1",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "source_file": "synthetic history",
+      "record_id": "customer-1-b"
+    },
+    {
+      "id": "customer-2-a",
+      "dataset_id": "synthetic-retention-v1",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "source_file": "synthetic history",
+      "record_id": "customer-2-a"
+    },
+    {
+      "id": "customer-3-b",
+      "dataset_id": "synthetic-retention-v1",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "source_file": "synthetic history",
+      "record_id": "customer-3-b"
+    }
+  ]
+}
